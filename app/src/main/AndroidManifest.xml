@@ -9,21 +9,25 @@
         android:roundIcon="@mipmap/ic_yef_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity" />
         <activity
-            android:name=".MainActivity"/>
-        <activity android:name=".startupScreen">
+            android:name=".startupScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".chat"
-            android:parentActivityName=".MainActivity"
-            android:label="Chat With Us" />
-        <activity android:name=".aboutus"
-            android:parentActivityName=".MainActivity"
-            android:label="About Us" />
+        <activity
+            android:name=".chat"
+            android:label="Chat With Us"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".aboutus"
+            android:label="About Us"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".registration"></activity>
     </application>
 
 </manifest>

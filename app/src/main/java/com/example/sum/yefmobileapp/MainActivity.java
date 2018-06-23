@@ -9,8 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -61,9 +59,11 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.menuaboutus:
                     startActivity(new Intent(MainActivity.this, aboutus.class));
                     return true;
+                case R.id.register:
+                    startActivity(new Intent(MainActivity.this, registration.class));
+                    return true;
             }
             return super.onOptionsItemSelected(item);
         }
-
 
 }

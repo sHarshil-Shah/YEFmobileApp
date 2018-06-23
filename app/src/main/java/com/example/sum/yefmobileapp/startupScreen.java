@@ -19,24 +19,20 @@ public class startupScreen extends AppCompatActivity {
         setContentView(R.layout.activity_startup_screen);
         getSupportActionBar().hide();
 
-        new CountDownTimer(2500, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
-
-            @Override
-            public void onFinish() {
-                getSupportActionBar().show();
-                //set the new Content of your activity
-            }
-        }.start();
-        new Handler().postDelayed(new Runnable() {
+        Thread myThread = new Thread() {
             @Override
             public void run() {
-                startActivity(new Intent(startupScreen.this, MainActivity.class));
-
+                try {
+                    sleep(3000);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        }, 2500);
+        };
+        myThread.start();
 
         Log.d("activity", "In StartUp Activity");
 
