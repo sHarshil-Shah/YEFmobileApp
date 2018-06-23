@@ -19,9 +19,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".chat"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:label="Chat With Us" />
         <activity android:name=".aboutus"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:label="About Us" />
     </application>
 
 </manifest>
