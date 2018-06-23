@@ -1,17 +1,23 @@
 package com.example.sum.yefmobileapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    //Webview for yef screen
+    private WebView mWebView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,29 +26,42 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("activity", "In Main Activity");
 
-        final ViewPager viewPager=findViewById(R.id.viewPager);
-        Comunicator comunicator=new Comunicator(getSupportFragmentManager());
-        viewPager.setAdapter(comunicator);
-        viewPager.setCurrentItem(0);
+        /*
+        Fragments deleted
+          */
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.mipmap.ic_yef_logo_round);
 
-        findViewById(R.id.txtGeneral).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewPager.setCurrentItem(0);
-            }
-        });
-        findViewById(R.id.txtSkills).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewPager.setCurrentItem(1);
-            }
-        });
+        /*
+       Fragments deleted
+        */
+        mWebView = (WebView) findViewById(R.id.webview);
+        WebSettings webSettings = mWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        if (savedInstanceState == null) {
+
+            mWebView.loadUrl("https://yefindia.in");
+        }
+
+        mWebView.setWebViewClient(new HelloWebViewClient());
+
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mWebView.saveState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        mWebView.restoreState(savedInstanceState);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -51,19 +70,46 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-        @Override
-        public boolean onOptionsItemSelected (MenuItem item){
-            switch (item.getItemId()) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
 
-                case R.id.menuchatwithus:
-                    startActivity(new Intent(MainActivity.this, chat.class));
-                    return true;
-                case R.id.menuaboutus:
-                    startActivity(new Intent(MainActivity.this, aboutus.class));
-                    return true;
-            }
-            return super.onOptionsItemSelected(item);
+            case R.id.menuchatwithus:
+                startActivity(new Intent(MainActivity.this, chat.class));
+                return true;
+            case R.id.menuaboutus:
+                startActivity(new Intent(MainActivity.this, aboutus.class));
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+
+    public boolean onKeyDown(final int keyCode, final KeyEvent event) {
+
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebView.canGoBack()) {
+            mWebView.goBack();
+//If there is history, then the canGoBack method will return ‘true’//
+            return true;
         }
 
+//If the button that’s been pressed wasn’t the ‘Back’ button, or there’s currently no
+//WebView history, then the system should resort to its default behavior and return
+//the user to the previous Activity//
+        return super.onKeyDown(keyCode, event);
+    }
 
+
+    public class HelloWebViewClient extends WebViewClient {
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
+
+    }
 }
+
