@@ -6,7 +6,4 @@
     <item
         android:id="@+id/menuaboutus"
         android:title="About Us"></item>
-    <item
-        android:id="@+id/register"
-        android:title="Register for a Good Cause"></item>
 </menu>
