@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".general">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/txtGeneral1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/holo_blue_bright"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:text="1. Education Centers "
+                android:textColor="?attr/actionModeSplitBackground"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/infoGeneral1"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:scrollHorizontally="true"
+                android:text="We have two centers located in Delhi (1) Masoodpur Dairy, Vasant Kunj and (2) Kakrola Village, Dwarka Sec-16. We provide holistic education, art and skill development, healthcare facilities, social awareness campaign etc. to deprived communities. Around 200 underprivileged children are studying at our centers. We are not only imparting education and useful skills but we also organize workshops/ personal counseling sessions in order to make every childa noble human being with high standards of moral values. They are being provided the opportunities to demonstrate their talents on different public platforms thus inspiring the spirit of those who come in the vicinity. Earlier they were called underprivileged but now most-privileged would be more suitable. Apart from this, we also provide them with healthcare facilities in association with other organizations."
+                android:textColor="@android:color/background_light"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/txtGeneral2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/holo_blue_bright"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:text="2. English Learning Program "
+                android:textColor="?attr/actionModeSplitBackground"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:scrollHorizontally="true"
+                android:text="As the saying goes, there is no language barrier, but it is us who have created a barrier in language. Being fluent in English can be viewed as an important criterion to describe one’s personality as an eligible individual or a qualified candidate for jobs. Children hailing from the lower sections are not well versed in English so we initiated a special language class for English."
+                android:textColor="@android:color/background_light"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/txtGeneral3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/holo_blue_bright"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:text="3. Computer Training Program "
+                android:textColor="?attr/actionModeSplitBackground"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:scrollHorizontally="true"
+                android:text="The present generation that we live in is highly technical and electronic gadgets are dominating our lives. Computer knowledge is important with the high tech world. The need to impart computer education to the children was realized since the children showed a keen interest for computer knowledge. Making computer education accessible to them has become our priority. Keeping the need in mind, a computer class program has been initiated.  "
+                android:textColor="@android:color/background_light"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>
