@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         mWebView = (WebView) findViewById(R.id.webview);
         WebSettings webSettings = mWebView.getSettings();
-        webSettings.setAppCacheMaxSize( 50 * 1024 * 1024 ); // 100MB
+        webSettings.setAppCacheMaxSize( 50 * 1024 * 1024 ); // 50MB
         webSettings.setJavaScriptEnabled(true);
         if (savedInstanceState == null) {
 
