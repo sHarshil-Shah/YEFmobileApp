@@ -4,4 +4,7 @@
         android:id="@+id/menuchatwithus"
         android:title="Chat with Us"></item>
 
+    <item
+        android:id="@+id/menu_volunteer"
+        android:title="Volunteer"></item>
 </menu>

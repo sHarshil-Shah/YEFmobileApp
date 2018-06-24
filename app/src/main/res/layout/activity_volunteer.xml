@@ -8,7 +8,7 @@
     <WebView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/updates_webview">
+        android:id="@+id/volunteer_webview">
 
     </WebView>
 

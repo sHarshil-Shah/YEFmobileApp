@@ -3,47 +3,46 @@ package com.example.sum.yefmobileapp;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class VolunteerActivity extends AppCompatActivity {
 
-    //Webview for yef screen
-    private WebView mWebView = null;
+    //Webview for volunteer form
+    private WebView volunteerWebView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        Log.d("activity", "In Main Activity");
+        setContentView(R.layout.activity_volunteer);
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setIcon(R.mipmap.ic_yef_logo_round);
+        actionBar.setTitle("Volunteer");
 
-        mWebView = (WebView) findViewById(R.id.updates_webview);
-        WebSettings webSettings = mWebView.getSettings();
+        Log.d("activity", "In Volunteer Activity");
+        volunteerWebView = (WebView) findViewById(R.id.volunteer_webview);
+        WebSettings webSettings = volunteerWebView.getSettings();
         webSettings.setAppCacheMaxSize( 50 * 1024 * 1024 ); // 50MB
         webSettings.setJavaScriptEnabled(true);
         if (savedInstanceState == null) {
 
-            mWebView.loadUrl("https://www.yefindia.in/our-initiatives");
+            volunteerWebView.loadUrl("https://www.yefindia.in/get-involved/volunteer");
         }
 
-        mWebView.setWebViewClient(new HelloWebViewClient());
+        volunteerWebView.setWebViewClient(new HelloWebViewClient());
+
+
 
     }
-
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -52,46 +51,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        mWebView.saveState(outState);
+        volunteerWebView.saveState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        mWebView.restoreState(savedInstanceState);
+        volunteerWebView.restoreState(savedInstanceState);
     }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.mymenu, menu);
-        return true;
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-
-            case R.id.menuchatwithus:
-                startActivity(new Intent(MainActivity.this, chat.class));
-                return true;
-
-            case R.id.menu_volunteer:
-                startActivity(new Intent(MainActivity.this, VolunteerActivity.class));
-                return true;
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
 
     @Override
 
     public boolean onKeyDown(final int keyCode, final KeyEvent event) {
 
-        if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebView.canGoBack()) {
-            mWebView.goBack();
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && volunteerWebView.canGoBack()) {
+            volunteerWebView.goBack();
 //If there is history, then the canGoBack method will return ‘true’//
             return true;
         }
@@ -103,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mWebView.clearCache(true);
-        mWebView.clearHistory();
+        volunteerWebView.clearCache(true);
+        volunteerWebView.clearHistory();
     }
 
 
@@ -127,6 +101,3 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-
-
-
