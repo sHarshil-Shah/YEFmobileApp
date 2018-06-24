@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"/>
+            android:name=".MainActivity"
+            android:configChanges="screenSize|orientation"/>
         <activity android:name=".startupScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,9 +26,6 @@
         <activity android:name=".chat"
             android:parentActivityName=".MainActivity"
             android:label="Chat With Us" />
-        <activity android:name=".aboutus"
-            android:parentActivityName=".MainActivity"
-            android:label="About Us" />
     </application>
 
 </manifest>

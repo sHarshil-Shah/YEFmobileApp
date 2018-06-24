@@ -1,7 +1,7 @@
 package com.example.sum.yefmobileapp;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -26,20 +26,14 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("activity", "In Main Activity");
 
-        /*
-        Fragments deleted
-          */
-
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.mipmap.ic_yef_logo_round);
 
-        /*
-       Fragments deleted
-        */
         mWebView = (WebView) findViewById(R.id.webview);
         WebSettings webSettings = mWebView.getSettings();
+        webSettings.setAppCacheMaxSize( 50 * 1024 * 1024 ); // 100MB
         webSettings.setJavaScriptEnabled(true);
         if (savedInstanceState == null) {
 
@@ -48,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
 
         mWebView.setWebViewClient(new HelloWebViewClient());
 
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 
     @Override
@@ -77,9 +76,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menuchatwithus:
                 startActivity(new Intent(MainActivity.this, chat.class));
                 return true;
-            case R.id.menuaboutus:
-                startActivity(new Intent(MainActivity.this, aboutus.class));
-                return true;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -95,10 +92,15 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-//If the button that’s been pressed wasn’t the ‘Back’ button, or there’s currently no
-//WebView history, then the system should resort to its default behavior and return
-//the user to the previous Activity//
+//Default behaviour
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mWebView.clearCache(true);
+        mWebView.clearHistory();
     }
 
 
@@ -106,10 +108,21 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
+            if(Uri.parse(url).getHost().contains("yefindia.in")) {
+
+//If the URL does contain the “example.com” string, then the shouldOverrideUrlLoading method
+//will return ‘false” and the URL will be loaded inside your WebView//
+                return false;
+            }
+
+//If the URL doesn’t contain this string, then it’ll return “true.” At this point, we’ll
+//launch the user’s preferred browser, by firing off an Intent//
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            view.getContext().startActivity(intent);
             return true;
         }
-
     }
 }
+
+
 

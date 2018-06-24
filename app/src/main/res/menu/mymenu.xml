@@ -3,7 +3,5 @@
     <item
         android:id="@+id/menuchatwithus"
         android:title="Chat with Us"></item>
-    <item
-        android:id="@+id/menuaboutus"
-        android:title="About Us"></item>
+
 </menu>
