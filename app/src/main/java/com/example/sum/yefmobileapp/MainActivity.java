@@ -9,9 +9,11 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,10 +33,11 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.mipmap.ic_yef_logo_round);
 
-        mWebView = (WebView) findViewById(R.id.updates_webview);
+        mWebView = findViewById(R.id.updates_webview);
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setAppCacheMaxSize( 50 * 1024 * 1024 ); // 50MB
         webSettings.setJavaScriptEnabled(true);
+
         if (savedInstanceState == null) {
 
             mWebView.loadUrl("https://www.yefindia.in/our-initiatives");
@@ -124,6 +127,14 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             view.getContext().startActivity(intent);
             return true;
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            // TODO Auto-generated method stub
+            super.onPageFinished(view, url);
+            ProgressBar progressBar = findViewById(R.id.progressBar1);
+            progressBar.setVisibility(View.GONE);
         }
     }
 }

@@ -29,7 +29,7 @@
         <activity android:name=".VolunteerActivity"
             android:parentActivityName=".MainActivity"
             android:configChanges="screenSize|orientation"
-            android:label="Chat With Us" />
+            android:label="Volunteer" />
     </application>
 
 </manifest>
