@@ -1,3 +1,7 @@
 # YEFmobileApp
 
-This app will contain YEF latest work information and a option for chatting.
+This app will contain Youth Empowerment Foundation's latest work information.
+
+Chatting option for student's guidance.
+
+Registration for Volunteers.
