@@ -13,13 +13,26 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
+
+import com.firebase.client.Firebase;
 
 
 public class MainActivity extends AppCompatActivity {
 
     //Webview for yef screen
     private WebView mWebView = null;
+    LinearLayout layout;
+    RelativeLayout layout_2;
+    ImageView sendButton;
+    EditText messageArea;
+    ScrollView scrollView;
+    Firebase reference1, reference2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         mWebView = findViewById(R.id.updates_webview);
         WebSettings webSettings = mWebView.getSettings();
-        webSettings.setAppCacheMaxSize( 50 * 1024 * 1024 ); // 50MB
+        webSettings.setAppCacheMaxSize(50 * 1024 * 1024); // 50MB
         webSettings.setJavaScriptEnabled(true);
 
         if (savedInstanceState == null) {
@@ -77,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.menuchatwithus:
-                startActivity(new Intent(MainActivity.this, chat.class));
+                startActivity(new Intent(MainActivity.this, Register.class));
                 return true;
 
             case R.id.menu_volunteer:
@@ -115,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if(Uri.parse(url).getHost().contains("yefindia.in")) {
+            if (Uri.parse(url).getHost().contains("yefindia.in")) {
 
 //If the URL does contain the “example.com” string, then the shouldOverrideUrlLoading method
 //will return ‘false” and the URL will be loaded inside your WebView//
@@ -137,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
             progressBar.setVisibility(View.GONE);
         }
     }
+
 }
 
 

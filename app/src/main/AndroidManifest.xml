@@ -2,9 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sum.yefmobileapp">
 
-    <uses-permission android:name="android.permission.INTERNET">
-
-    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -24,13 +22,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".chat"
-            android:parentActivityName=".MainActivity"
-            android:label="Chat With Us" />
-        <activity android:name=".VolunteerActivity"
-            android:parentActivityName=".MainActivity"
+        <activity
+            android:name=".VolunteerActivity"
             android:configChanges="screenSize|orientation"
-            android:label="Volunteer" />
+            android:label="Volunteer"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Login"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Register"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Users"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".chatMainActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>
